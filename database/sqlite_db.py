@@ -1,7 +1,4 @@
 import sqlite3 as sq
-import os
-
-from aiogram import types
 
 from config import bot
 from handlers.admin import is_admin

@@ -47,8 +47,6 @@ key_1 = KeyboardButton('users')
 key_2 = KeyboardButton('sendm')
 
 
-
-
 async def set_main_menu(bot: Bot):
     main_menu_commands = [BotCommand(
         command=command,
