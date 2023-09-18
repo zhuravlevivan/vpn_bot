@@ -21,9 +21,16 @@ def sql_start():
                 )""")
     cur.execute("""CREATE TABLE IF NOT EXISTS messages(
                        chatid varchar(255),
+                       login varchar(255),
                        message varchar(255)
                 )""")
     base.commit()
+
+
+def backupdb():
+    b_conn = sq.connect("backup.db")
+    sq.connect('vpn_users.db').backup(b_conn)
+    b_conn.close()
 
 
 async def sql_add_user_cmd(message):
@@ -52,7 +59,8 @@ async def save_message_to_db(message):
     global base, cur
     base = sq.connect('vpn_users.db', check_same_thread=False)
     cur = base.cursor()
-    cur.execute(f"INSERT INTO messages VALUES(?,?)", (message.chat.id,
-                                                      message.text,
-                                                      ))
+    cur.execute(f"INSERT INTO messages VALUES(?,?,?)", (message.chat.id,
+                                                        f"@{message.from_user.username}",
+                                                        message.text
+                                                        ))
     base.commit()
