@@ -1,10 +1,18 @@
 import sqlite3 as sq
+import gspread
 
-from config import bot
+from datetime import datetime
+
+from config import bot, google_json, tab_name
 from handlers.admin import is_admin
 
 base = None
 cur = None
+
+gc = gspread.service_account(filename=google_json)
+sh = gc.open(tab_name)
+worksheet = sh.get_worksheet(0)
+worksheet2 = sh.get_worksheet(1)
 
 
 def sql_start():
@@ -43,6 +51,10 @@ async def sql_add_user_cmd(message):
                                                        message.from_user.last_name
                                                        ))
     base.commit()
+    await add_users_to_sheets(message.chat.id,
+                              message.from_user.username,
+                              message.from_user.first_name,
+                              message.from_user.last_name)
 
 
 async def show_users(message):
@@ -64,3 +76,26 @@ async def save_message_to_db(message):
                                                         message.text
                                                         ))
     base.commit()
+    await add_message_from_user_to_sheets(message.chat.id, message.from_user.username, message.text)
+
+
+async def add_users_to_sheets(user_id, u_name, f_name, l_name):
+    date = datetime.now().strftime("%Y-%m-%d-%H-%M-%S")
+    raw_data = [user_id, f'@{u_name}', f_name, l_name, date]
+    clean_data = []
+    for item in raw_data:
+        if item is None:
+            item = '___'
+        clean_data.append(item)
+    worksheet.append_row(clean_data)
+
+
+async def add_message_from_user_to_sheets(user_id, u_name, message):
+    date = datetime.now().strftime("%Y-%m-%d-%H-%M-%S")
+    raw_data = [user_id, f'@{u_name}', message, date]
+    clean_data = []
+    for item in raw_data:
+        if item is None:
+            item = '___'
+        clean_data.append(item)
+    worksheet2.append_row(clean_data)
