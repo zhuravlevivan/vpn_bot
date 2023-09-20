@@ -85,7 +85,7 @@ async def add_users_to_sheets(user_id, u_name, f_name, l_name):
     clean_data = []
     for item in raw_data:
         if item is None:
-            item = '___'
+            item = '--'
         clean_data.append(item)
     worksheet.append_row(clean_data)
 
