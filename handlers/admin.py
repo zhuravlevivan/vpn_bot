@@ -1,3 +1,4 @@
+import asyncio
 import random
 import time
 
@@ -52,6 +53,7 @@ async def help_cmd(message: types.Message):
 
     await bot.send_video(message.chat.id, open("./file_0.mp4", "rb"), caption='See tutorial')
     await bot.send_message(message.chat.id, TEXTS.HELPMESSAGE.get('1'))
+    # await send_message_and_delete(bot, message.chat.id, TEXTS.HELPMESSAGE.get('1'))
 
 
 async def send_menu_text(message: types.Message):
@@ -125,3 +127,9 @@ async def process_get_message_for_user_step(message: types.Message, state: FSMCo
     await bot.send_message(user_id, message_for_user)
     await message.answer('Отправлено!')
     await state.finish()
+
+
+async def send_message_and_delete(bot, chat_id, message):
+    sent_message = await bot.send_message(chat_id, message)
+    await asyncio.sleep(30)
+    await sent_message.delete()

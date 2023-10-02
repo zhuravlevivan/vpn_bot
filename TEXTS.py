@@ -30,5 +30,5 @@ COMMANDS: dict[str, str] = {
 HELPMESSAGE: dict[str, str] = {
     '1': "It is now possible to use OutlineVPN and IKEv2.\nJust write to the bot "
          "that you need such access and I will send you the data to connect."
-         "\nAccess is free until the end of the month (09/28) next - $1 per month"
+         "\n$1 per month"
 }
