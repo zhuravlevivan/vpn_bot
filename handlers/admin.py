@@ -52,8 +52,8 @@ async def help_cmd(message: types.Message):
                            reply_markup=admin_kb.keyboard)
 
     await bot.send_video(message.chat.id, open("./file_0.mp4", "rb"), caption='See tutorial')
-    await bot.send_message(message.chat.id, TEXTS.HELPMESSAGE.get('1'))
-    # await send_message_and_delete(bot, message.chat.id, TEXTS.HELPMESSAGE.get('1'))
+    # await bot.send_message(message.chat.id, TEXTS.HELPMESSAGE.get('1'))
+    await send_message_and_delete(bot, message.chat.id, TEXTS.HELPMESSAGE.get('1'))
 
 
 async def send_menu_text(message: types.Message):
