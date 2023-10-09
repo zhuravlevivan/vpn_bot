@@ -125,7 +125,7 @@ async def process_get_message_for_user_step(message: types.Message, state: FSMCo
     data = await state.get_data()
     user_id = data.get('user_id')
     await bot.send_message(user_id, message_for_user)
-    await message.answer('Отправлено!')
+    await message.answer('Отправлено!', reply_markup=admin_kb.keyboard)
     await state.finish()
 
 
