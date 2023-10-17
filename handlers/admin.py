@@ -53,7 +53,7 @@ async def help_cmd(message: types.Message):
 
     await bot.send_video(message.chat.id, open("./file_0.mp4", "rb"), caption='See tutorial')
     # await bot.send_message(message.chat.id, TEXTS.HELPMESSAGE.get('1'))
-    await send_message_and_delete(bot, message.chat.id, TEXTS.HELPMESSAGE.get('1'))
+    # await send_message_and_delete(bot, message.chat.id, TEXTS.HELPMESSAGE.get('1'))
 
 
 async def send_menu_text(message: types.Message):
@@ -124,8 +124,13 @@ async def process_get_message_for_user_step(message: types.Message, state: FSMCo
     message_for_user = message.text
     data = await state.get_data()
     user_id = data.get('user_id')
-    await bot.send_message(user_id, message_for_user)
-    await message.answer('Отправлено!', reply_markup=admin_kb.keyboard)
+    try:
+        await bot.send_message(user_id, message_for_user)
+        await message.answer('Отправлено!', reply_markup=admin_kb.keyboard)
+
+    except Exception as e:
+        await message.answer(f'{e}', reply_markup=admin_kb.keyboard)
+
     await state.finish()
 
 
