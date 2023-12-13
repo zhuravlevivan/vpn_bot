@@ -2,9 +2,10 @@ import asyncio
 import random
 import time
 
-from aiogram import types
+from aiogram import types #, exceptions
 from aiogram.dispatcher.filters.state import State, StatesGroup
 from aiogram.dispatcher import FSMContext
+
 
 import TEXTS
 import config
@@ -138,3 +139,9 @@ async def send_message_and_delete(bot, chat_id, message):
     sent_message = await bot.send_message(chat_id, message)
     await asyncio.sleep(30)
     await sent_message.delete()
+
+
+# @dp.message_handler(content_types=[types.ContentType.NEW_CHAT_MEMBERS, types.ContentType.LEFT_CHAT_MEMBER])
+async def handle_block(message: types.Message):
+    print('Users changed')
+

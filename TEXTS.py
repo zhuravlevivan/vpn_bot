@@ -1,11 +1,11 @@
 CALLS: dict[str, str] = {
-    '1': 'https://www.vpnbook.com/free-openvpn-account/VPNBook.com-OpenVPN-PL226.zip',
-    '2': 'https://www.vpnbook.com/free-openvpn-account/VPNBook.com-OpenVPN-DE4.zip',
-    '3': 'https://www.vpnbook.com/free-openvpn-account/VPNBook.com-OpenVPN-US1.zip',
-    '4': 'https://www.vpnbook.com/free-openvpn-account/VPNBook.com-OpenVPN-CA222.zip',
-    '5': 'https://www.vpnbook.com/free-openvpn-account/VPNBook.com-OpenVPN-CA198.zip',
-    '6': 'https://www.vpnbook.com/free-openvpn-account/VPNBook.com-OpenVPN-FR1.zip',
-    '7': 'https://www.vpnbook.com/free-openvpn-account/VPNBook.com-OpenVPN-FR8.zip',
+    '1': 'https://www.vpnbook.com/free-openvpn-account/vpnbook-openvpn-pl134.zip',
+    '2': 'https://www.vpnbook.com/free-openvpn-account/vpnbook-openvpn-de220.zip',
+    '3': 'https://www.vpnbook.com/free-openvpn-account/vpnbook-openvpn-us1.zip',
+    '4': 'https://www.vpnbook.com/free-openvpn-account/vpnbook-openvpn-ca149.zip',
+    '5': 'https://www.vpnbook.com/free-openvpn-account/vpnbook-openvpn-ca196.zip',
+    '6': 'https://www.vpnbook.com/free-openvpn-account/vpnbook-openvpn-fr200.zip',
+    '7': 'https://www.vpnbook.com/free-openvpn-account/vpnbook-openvpn-fr231.zip',
     '11': '[Windows 10/11](https://t.me/iv?url=https%3A%2F%2Fwww.vpnbook.com%2Fhowto%2Fsetup-openvpn-on-windows10&rhash'
           '=4f434faae712d2)',
     '12': '[Windows 7](https://t.me/iv?url=https%3A%2F%2Fwww.vpnbook.com%2Fhowto%2Fsetup-openvpn-on-windows7&rhash'

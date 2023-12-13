@@ -5,13 +5,13 @@ from config import Bot
 
 
 markup_cert = InlineKeyboardMarkup()
-btn1 = InlineKeyboardButton(text='PL', callback_data='1')
-btn2 = InlineKeyboardButton(text='DE', callback_data='2')
+btn1 = InlineKeyboardButton(text='PL134', callback_data='1')
+btn2 = InlineKeyboardButton(text='DE220', callback_data='2')
 btn3 = InlineKeyboardButton(text='US1', callback_data='3')
-btn4 = InlineKeyboardButton(text='CA222', callback_data='4')
-btn5 = InlineKeyboardButton(text='CA198', callback_data='5')
-btn6 = InlineKeyboardButton(text='FR1', callback_data='6')
-btn7 = InlineKeyboardButton(text='FR8', callback_data='7')
+btn4 = InlineKeyboardButton(text='CA149', callback_data='4')
+btn5 = InlineKeyboardButton(text='CA196', callback_data='5')
+btn6 = InlineKeyboardButton(text='FR200', callback_data='6')
+btn7 = InlineKeyboardButton(text='FR231', callback_data='7')
 
 markup_cert.row(btn4, btn5)
 markup_cert.row(btn1, btn2, btn3)

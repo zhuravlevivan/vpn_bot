@@ -1,10 +1,11 @@
 from aiogram.dispatcher.filters import Text
+from aiogram import types
 
 from config import Dispatcher
 from database import sqlite_db
 from handlers.admin import (start_cmd, help_cmd, send_menu_text, query_handler,
                             send_message_to_user, process_get_user_ID_step, process_get_message_for_user_step,
-                            cancel_handler, SendUserMessage)
+                            cancel_handler, SendUserMessage, handle_block)
 
 
 def register_handlers_admin(dp: Dispatcher):
@@ -19,3 +20,7 @@ def register_handlers_admin(dp: Dispatcher):
     dp.register_message_handler(process_get_user_ID_step, state=SendUserMessage.GetUserID)
     dp.register_message_handler(process_get_message_for_user_step, state=SendUserMessage.GetMessageForUser)
     dp.register_message_handler(send_menu_text, content_types=['text'])
+
+    # dp.register_message_handler(handle_block, content_types=types.ContentTypes.LEFT_CHAT_MEMBER)
+    dp.message_handler(handle_block, content_types=[types.ContentType.NEW_CHAT_MEMBERS, types.ContentType.LEFT_CHAT_MEMBER])
+    dp.register_message_handler(handle_block, content_types=[types.ContentType.NEW_CHAT_MEMBERS, types.ContentType.LEFT_CHAT_MEMBER])

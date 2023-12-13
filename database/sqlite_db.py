@@ -13,6 +13,7 @@ gc = gspread.service_account(filename=google_json)
 sh = gc.open(tab_name)
 worksheet = sh.get_worksheet(0)
 worksheet2 = sh.get_worksheet(1)
+worksheet3 = sh.get_worksheet(2)
 
 
 def sql_start():
@@ -99,3 +100,14 @@ async def add_message_from_user_to_sheets(user_id, u_name, message):
             item = '___'
         clean_data.append(item)
     worksheet2.append_row(clean_data)
+
+
+async def add_action_user_block_bot_to_sheets(user_id, u_name):
+    date = datetime.now().strftime("%Y-%m-%d-%H-%M-%S")
+    raw_data = [user_id, f'@{u_name}', f'block the bot', date]
+    clean_data = []
+    for item in raw_data:
+        if item is None:
+            item = '___'
+        clean_data.append(item)
+    worksheet3.append_row(clean_data)
